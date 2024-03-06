@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.AddController">
+    <TextField fx:id="lastNameField" promptText="Last Name"/>
+    <TextField fx:id="firstNameField" promptText="First Name"/>
+    <TextField fx:id="nickNameField" promptText="Nick Name"/>
+    <TextField fx:id="phoneNumberField" promptText="Phone Number"/>
+    <TextField fx:id="addressField" promptText="Address"/>
+    <TextField fx:id="emailAddressField" promptText="Email"/>
+    <TextField fx:id="birthDateField" promptText="Birth Date"/>
+
+    <!-- Other fields... -->
+    <Button text="Add Person" onAction="#addPerson"/>
+</VBox>

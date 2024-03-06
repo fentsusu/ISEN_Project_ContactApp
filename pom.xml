@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>isen</groupId>
+	<artifactId>betterquiz</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<!-- Let's add a variable, shall we -->
+		<javafx.version>19</javafx.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<!-- Here we make use of a variable in our pom file, this helps us not having to repeat ourselves -->
+			<version>${javafx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>3.30.1</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>${maven.compiler.target}</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.8</version>
+                <executions>
+                    <execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jlink</goal>
+						</goals>
+                        <!-- Default configuration for running -->
+                        <!-- Usage: mvn clean javafx:run -->
+                        <id>default-cli</id>
+                        <configuration>
+                            <!-- this sets the name of the launcher script in our jlink image-->
+                            <launcher>${project.artifactId}</launcher>
+                            <!-- this sets the name of the folder where our jlink image will be generated -->
+                            <jlinkImageName>${project.artifactId}</jlinkImageName>
+                            <!-- this sets the name of the zip file of our jlink image -->
+                            <jlinkZipName>${project.artifactId}-${project.version}</jlinkZipName>
+                            <!-- this sets the name of our main class. Module declaration spares us some warnings -->
+                            <mainClass>isen.quiz/isen.quiz.App</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
