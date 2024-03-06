@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class AddController {
     @FXML
@@ -29,8 +30,15 @@ public class AddController {
 
     private final Database database;
 
+    public void initialize() {
+        // Set the default value to today's date
+        birthDatePicker.setValue(LocalDate.now());
+    }
+
+
     public AddController() {
-        database = new Database("jdbc:sqlite:sqlitedb.db");
+        database = new Database("jdbc:sqlite:sqlitedb");
+
     }
 
     public void addPerson() throws SQLException {
@@ -40,7 +48,8 @@ public class AddController {
         String phoneNumber = phoneNumberField.getText();
         String address = addressField.getText();
         String emailAddress = emailAddressField.getText();
-        Date birthDate = Date.valueOf(birthDatePicker.getValue());
+        Date birthDate;
+        birthDate = Date.valueOf(birthDatePicker.getValue());
 
         Person person = new Person(lastName, firstName, nickName, phoneNumber, address, emailAddress, birthDate);
         database.addPerson(person);
