@@ -30,7 +30,7 @@ public class AddController {
     private final Database database;
 
     public AddController() {
-        database = new Database("jdbc:sqlite:sqlite.db");
+        database = new Database("jdbc:sqlite:sqlitedb.db");
     }
 
     public void addPerson() throws SQLException {

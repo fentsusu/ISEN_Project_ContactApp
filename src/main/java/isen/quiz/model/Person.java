@@ -1,5 +1,4 @@
 package isen.quiz.model;
-
 import java.util.Date;
 
 public class Person {
