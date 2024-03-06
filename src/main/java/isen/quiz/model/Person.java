@@ -1,6 +1,6 @@
 package isen.quiz.model;
 import java.util.Date;
-
+import java.util.regex.Pattern;
 public class Person {
 
     private int id;
@@ -12,14 +12,15 @@ public class Person {
     private String emailAddress;
     private Date birthDate;
 
+
     public Person(int id, String lastName, String firstName, String nickName, String phoneNumber, String address, String emailAddress, Date birthDate) {
         this.id = id;
-        this.lastName = lastName;
-        this.firstName = firstName;
+        validateAndSetFirstName(firstName);
+        validateAndSetLastName(lastName);
         this.nickName = nickName;
-        this.phoneNumber = phoneNumber;
+        validateAndSetPhoneNumber(phoneNumber);
         this.address = address;
-        this.emailAddress = emailAddress;
+        validateAndSetEmailAddress(emailAddress);
         this.birthDate = birthDate;
     }
 
@@ -28,12 +29,13 @@ public class Person {
     }
 
     public Person(String lastName, String firstName, String nickName, String phoneNumber, String address, String emailAddress, java.sql.Date birthDate) {
-        this.lastName = lastName;
-        this.firstName = firstName;
+
+        validateAndSetFirstName(firstName);
+        validateAndSetLastName(lastName);
         this.nickName = nickName;
-        this.phoneNumber = phoneNumber;
+        validateAndSetPhoneNumber(phoneNumber);
         this.address = address;
-        this.emailAddress = emailAddress;
+        validateAndSetEmailAddress(emailAddress);
         this.birthDate = birthDate;
     }
 
@@ -99,5 +101,44 @@ public class Person {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    private void validateAndSetFirstName(String firstName) {
+        if (firstName == null || firstName.isEmpty() || firstName.length() > 50) {
+            throw new IllegalArgumentException("First name must be non-empty and less than 50 characters.");
+        }
+        this.firstName = firstName;
+    }
+
+    private void validateAndSetLastName(String lastName) {
+        if (lastName == null || lastName.isEmpty() || lastName.length() > 50) {
+            throw new IllegalArgumentException("Last name must be non-empty and less than 50 characters.");
+        }
+        this.lastName = lastName;
+    }
+
+    private void validateAndSetPhoneNumber(String phoneNumber) {
+        if (phoneNumber == null || !isValidPhoneNumber(phoneNumber)) {
+            throw new IllegalArgumentException("Invalid phone number.");
+        }
+        this.phoneNumber = phoneNumber;
+    }
+
+    private void validateAndSetEmailAddress(String emailAddress) {
+        if (emailAddress == null || !isValidEmail(emailAddress)) {
+            throw new IllegalArgumentException("Invalid email address.");
+        }
+        this.emailAddress = emailAddress;
+    }
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        // Use a regular expression for phone number validation
+        String regexPattern = "^(\\d{10})$"; // Assumes a ten-digit number
+        return Pattern.matches(regexPattern, phoneNumber);
+    }
+
+    private boolean isValidEmail(String email) {
+        // Use a regular expression for email validation
+        String regexPattern = "^(.+)@(\\S+)$";
+        return Pattern.matches(regexPattern, email);
     }
 }

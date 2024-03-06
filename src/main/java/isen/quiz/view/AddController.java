@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.regex.Pattern;
 
 public class AddController {
     @FXML
@@ -38,10 +39,10 @@ public class AddController {
 
     public AddController() {
         database = new Database("jdbc:sqlite:sqlitedb");
-
     }
 
     public void addPerson() throws SQLException {
+        try{
         String lastName = lastNameField.getText();
         String firstName = firstNameField.getText();
         String nickName = nickNameField.getText();
@@ -55,6 +56,9 @@ public class AddController {
         database.addPerson(person);
 
         showSuccessAlert("Person has been added!");
+        } catch (Exception e) {
+            showErrorAlert("Error adding person: " + e.getMessage());
+        }
     }
 
     private void showSuccessAlert(String message) {
