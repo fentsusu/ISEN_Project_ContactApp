@@ -33,9 +33,6 @@ public class App extends Application {
 		launch();
 	}
 
-
-
-
 	/**
 	 * @param rootElement updates the center of our layout with the @rootElement
 	 *                    passed in parameter

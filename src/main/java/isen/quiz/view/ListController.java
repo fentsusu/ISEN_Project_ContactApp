@@ -14,7 +14,7 @@ public class ListController {
     private Database database;
 
     public ListController() {
-        database = new Database("jdbc:sqlite:sqlite.db");
+        database = new Database("jdbc:sqlite:sqlitedb");
     }
 
     public void initialize() {
@@ -23,3 +23,6 @@ public class ListController {
         listView.getItems().addAll(persons);
     }
 }
+
+
+

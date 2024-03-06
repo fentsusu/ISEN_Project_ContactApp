@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.DeleteController">
     <TextField fx:id="idField" promptText="ID"/>
     <Button text="Delete Person" onAction="#deletePerson"/>
 </VBox>

@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-
 public class PeopleFactory {
 
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("M/d/yyyy");

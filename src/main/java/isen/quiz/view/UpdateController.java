@@ -3,14 +3,16 @@ package isen.quiz.view;
 import isen.quiz.model.Database;
 import isen.quiz.model.Person;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 
 import java.sql.Date;
-import java.time.LocalDate;
-public class AddController {
+
+public class UpdateController {
+    @FXML
+    private TextField idField;
     @FXML
     private TextField lastNameField;
     @FXML
@@ -24,22 +26,15 @@ public class AddController {
     @FXML
     private TextField emailAddressField;
     @FXML
-    private DatePicker birthDatePicker; // Use DatePicker for birth date input
+    private DatePicker birthDatePicker;
+    private Database database;
 
-    private final Database database;
-
-    public void initialize() {
-        // Set the default value to today's date
-        birthDatePicker.setValue(LocalDate.now());
-    }
-
-
-    public AddController() {
+    public UpdateController() {
         database = new Database("jdbc:sqlite:sqlitedb");
     }
 
-    public void addPerson() {
-        try{
+    public void updatePerson() {
+        int id = Integer.parseInt(idField.getText());
         String lastName = lastNameField.getText();
         String firstName = firstNameField.getText();
         String nickName = nickNameField.getText();
@@ -49,28 +44,14 @@ public class AddController {
         Date birthDate;
         birthDate = Date.valueOf(birthDatePicker.getValue());
 
-        Person person = new Person(lastName, firstName, nickName, phoneNumber, address, emailAddress, birthDate);
-        database.addPerson(person);
+        Person person = new Person(id, lastName, firstName, nickName, phoneNumber, address, emailAddress, birthDate);
+        database.updatePerson(person);
 
-        showSuccessAlert("Person has been added!");
-        } catch (Exception e) {
-            showErrorAlert("Error adding person: " + e.getMessage());
-        }
-    }
-
-    private void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+        alert.setContentText("Person has been updated!");
 
-    private void showErrorAlert(String errorMessage) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText(errorMessage);
         alert.showAndWait();
     }
 }
