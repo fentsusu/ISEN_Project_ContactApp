@@ -1,6 +1,8 @@
 package isen.quiz.view;
 
+import isen.quiz.App;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,11 +23,14 @@ public class MainLayoutController {
 	}
 
 	public void gotoHome() {
-
+		App.showView("HomeScreen");
 	}
 
-	public void gotoQuestionAdmin() {
-
+	public void gotoUpdatePerson() {
+		App.showView("UpdatePerson");
+	}
+	public void gotoDeletePerson(ActionEvent actionEvent) {
+		App.showView("DeletePerson");
 	}
 
 	public void showAddPerson() throws Exception {
@@ -47,4 +52,6 @@ public class MainLayoutController {
 		Pane listPane = FXMLLoader.load(getClass().getResource("isen/quiz/view/ListPerson.fxml"));
 		mainContent.getChildren().setAll(listPane);
 	}
+
+
 }

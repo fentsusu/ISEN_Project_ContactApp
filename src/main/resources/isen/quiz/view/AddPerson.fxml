@@ -32,4 +32,6 @@
 
     <Button layoutX="300" layoutY="70" onAction="#addPerson" text="Add Person"/>
 
+    <Button layoutX="300" layoutY="70" onAction="#goBack" text="Back"/>
+
 </VBox>

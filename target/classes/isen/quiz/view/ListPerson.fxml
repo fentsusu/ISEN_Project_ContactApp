@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.ListController">
-    <ListView fx:id="listView"/>
-
+    <Button text="Back" onAction="#goBack"/>
+    <TableView fx:id="tableView">
+        <columns>
+            <TableColumn text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Last Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="lastName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="First Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="firstName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Nick Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nickName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Phone Number">
+                <cellValueFactory>
+                    <PropertyValueFactory property="phone_number"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Address">
+                <cellValueFactory>
+                    <PropertyValueFactory property="address"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Email Address">
+                <cellValueFactory>
+                    <PropertyValueFactory property="email_address"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Birthdate">
+                <cellValueFactory>
+                    <PropertyValueFactory property="birth_date"/>
+                </cellValueFactory>
+            </TableColumn>
+            <!-- Other columns... -->
+            <TableColumn text="Edit">
+                <!-- You will need to set a cell factory here to create the Edit buttons -->
+            </TableColumn>
+            <TableColumn text="Delete">
+                <!-- You will need to set a cell factory here to create the Delete buttons -->
+            </TableColumn>
+        </columns>
+    </TableView>
+    <Button text="Back" onAction="#goBack"/>
 </VBox>

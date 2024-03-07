@@ -20,7 +20,10 @@
 				</Menu>
 				<Menu mnemonicParsing="false" text="Administration">
 					<items>
-						<MenuItem mnemonicParsing="false" onAction="#gotoQuestionAdmin" text="Edit questions" />
+						<MenuItem mnemonicParsing="false" onAction="#gotoUpdatePerson" text="Edit person" />
+					</items>
+					<items>
+						<MenuItem mnemonicParsing="false" onAction="#gotoDeletePerson" text="Delete person" />
 					</items>
 				</Menu>
 			</menus>

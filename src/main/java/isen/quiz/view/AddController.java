@@ -1,13 +1,19 @@
 package isen.quiz.view;
 
+import isen.quiz.App;
 import isen.quiz.model.Database;
 import isen.quiz.model.Person;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 public class AddController {
@@ -57,7 +63,10 @@ public class AddController {
             showErrorAlert("Error adding person: " + e.getMessage());
         }
     }
-
+    @FXML
+    private void goBack(){
+        App.showView("HomeScreen");
+    }
     private void showSuccessAlert(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
@@ -73,4 +82,5 @@ public class AddController {
         alert.setContentText(errorMessage);
         alert.showAndWait();
     }
+
 }
