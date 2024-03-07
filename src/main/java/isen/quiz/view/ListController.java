@@ -6,14 +6,8 @@ import isen.quiz.model.Person;
 import isen.quiz.util.DeleteButtonCellFactory;
 import isen.quiz.util.EditButtonCellFactory;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.util.Callback;
-
-import java.io.IOException;
 import java.util.List;
 
 public class ListController {
