@@ -10,7 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import java.util.List;
 
-public class ListController {
+public class  ListController {
     @FXML
     private TableView<Person> tableView;
     @FXML
@@ -18,7 +18,7 @@ public class ListController {
     @FXML
     private TableColumn<Person, Void> deleteColumn;
 
-    private Database database;
+    private final Database database;
 
     public ListController() {
         database = new Database("jdbc:sqlite:sqlitedb");
@@ -28,15 +28,24 @@ public class ListController {
     public void initialize() {
         // Populate the table view with persons from the database
         List<Person> persons = database.listPersons();
-        tableView.getItems().addAll(persons);
+        //tableView.getItems().addAll(persons);
 
         // Set the cell factories
-        editColumn.setCellFactory(new EditButtonCellFactory());
-        deleteColumn.setCellFactory(new DeleteButtonCellFactory());
+        //editColumn.setCellFactory(new EditButtonCellFactory(this::goToUpdate));
+        //deleteColumn.setCellFactory(new DeleteButtonCellFactory(this::goToDelete));
     }
 
+    @FXML
+    public void goToUpdate() {
+        App.showView("UpdatePerson");
+    }
+    @FXML
+    public void goToDelete() {
+        App.showView("DeletePerson");
+    }
     @FXML
     public void goBack() {
         App.showView("HomeScreen");
     }
+
 }

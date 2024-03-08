@@ -44,5 +44,4 @@ public class App extends Application {
 			throw new IllegalArgumentException(e);
 		}
 	}
-
 }

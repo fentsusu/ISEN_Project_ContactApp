@@ -12,7 +12,7 @@
         <columns>
             <TableColumn text="ID">
                 <cellValueFactory>
-                    <PropertyValueFactory property="id"/>
+                    <PropertyValueFactory property="idperson"/>
                 </cellValueFactory>
             </TableColumn>
             <TableColumn text="Last Name">
@@ -45,19 +45,21 @@
                     <PropertyValueFactory property="email_address"/>
                 </cellValueFactory>
             </TableColumn>
+            <!--
             <TableColumn text="Birthdate">
                 <cellValueFactory>
                     <PropertyValueFactory property="birth_date"/>
                 </cellValueFactory>
             </TableColumn>
-            <!-- Other columns... -->
-            <TableColumn text="Edit">
-                <!-- You will need to set a cell factory here to create the Edit buttons -->
-            </TableColumn>
-            <TableColumn text="Delete">
-                <!-- You will need to set a cell factory here to create the Delete buttons -->
-            </TableColumn>
+
+             <TableColumn text="Update">
+                 <Button text="Update" onAction="#goToUpdate"/>
+             </TableColumn>
+
+             <TableColumn text="Delete">
+                 <Button text="Delete" onAction="#goToDelete"/>
+             </TableColumn>
+             -->
         </columns>
     </TableView>
-    <Button text="Back" onAction="#goBack"/>
 </VBox>

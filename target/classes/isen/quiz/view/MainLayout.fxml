@@ -10,12 +10,11 @@
 					<MenuItem mnemonicParsing="false" onAction="#gotoHome" text="Home" />
 					<SeparatorMenuItem mnemonicParsing="false" />
 						<MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Close" />
-                  		
-						
 				</Menu>
 				<Menu mnemonicParsing="false" text="Administration">
-						<MenuItem mnemonicParsing="false" onAction="#gotoUpdatePerson" text="Edit person" />
-						<MenuItem mnemonicParsing="false" onAction="#gotoDeletePerson" text="Delete person" />
+					<MenuItem mnemonicParsing="false" onAction="#gotoAddPerson" text="Add person" />
+					<MenuItem mnemonicParsing="false" onAction="#gotoUpdatePerson" text="Edit person" />
+					<MenuItem mnemonicParsing="false" onAction="#gotoDeletePerson" text="Delete person" />
 				</Menu>
 		</MenuBar>
 	</top>

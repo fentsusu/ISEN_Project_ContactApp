@@ -7,6 +7,9 @@ import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
 
 public class EditButtonCellFactory implements Callback<TableColumn<Person, Void>, TableCell<Person, Void>> {
+    public EditButtonCellFactory(Object goToUpdate) {
+    }
+
     @Override
     public TableCell<Person, Void> call(TableColumn<Person, Void> param) {
         return new TableCell<>() {

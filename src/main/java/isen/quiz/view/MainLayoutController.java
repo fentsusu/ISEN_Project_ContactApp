@@ -20,11 +20,11 @@ public class MainLayoutController {
 	public void gotoHome() {
 		App.showView("HomeScreen");
 	}
-
+	public void gotoAddPerson() {App.showView("AddPerson");}
 	public void gotoUpdatePerson() {
 		App.showView("UpdatePerson");
 	}
-	public void gotoDeletePerson(ActionEvent actionEvent) {
+	public void gotoDeletePerson() {
 		App.showView("DeletePerson");
 	}
 

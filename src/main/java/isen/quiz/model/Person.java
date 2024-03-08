@@ -132,7 +132,7 @@ public class Person {
     }
     private boolean isValidPhoneNumber(String phoneNumber) {
         // Use a regular expression for phone number validation
-        String regexPattern = "^(\\d{10})$"; // Assumes a ten-digit number
+        String regexPattern = "^(\\d{10})$"; // Ten-digit number
         return Pattern.matches(regexPattern, phoneNumber);
     }
 
