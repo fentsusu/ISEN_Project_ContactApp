@@ -1,16 +1,16 @@
 package isen.quiz;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import isen.quiz.service.DataSourceFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class App extends Application {
 
@@ -19,37 +19,39 @@ public class App extends Application {
 	private static BorderPane mainlayout;
 	@Override
 	public void init() throws Exception {
-		try (Connection connection = DataSourceFactory.getDataSource().getConnection()) {
-			try (Statement statement = connection.createStatement()) {
+		String url = "jdbc:sqlite:sqlite.db";
+		try (Connection connection = DriverManager.getConnection(url)) {
+			Statement statement = connection.createStatement();
 
-				// Create `person` table
-				statement.executeUpdate("CREATE TABLE IF NOT EXISTS person"
-						+ "idperson INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-						+ "lastname VARCHAR(45) NOT NULL,"
-						+ "firstname VARCHAR(45) NOT NULL,"
-						+ "nickname VARCHAR(45) NOT NULL,"
-						+ "phone_number VARCHAR(15) NULL,"
-						+ "address VARCHAR(200) NULL,"
-						+ "email_address VARCHAR(150) NULL,"
-						+ "birth_date DATE NULL);");
+			statement.executeUpdate("CREATE TABLE IF NOT EXISTS person (\n" +
+					"    idperson INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+					"    lastname VARCHAR(45) NOT NULL,\n" +
+					"    firstname VARCHAR(45) NOT NULL,\n" +
+					"    nickname VARCHAR(45) NOT NULL,\n" +
+					"    phone_number VARCHAR(15) NULL,\n" +
+					"    address VARCHAR(200) NULL,\n" +
+					"    email_address VARCHAR(150) NULL,\n" +
+					"    birth_date DATE NULL);");
 
-				// Delete previously inserted data
-				statement.executeUpdate("DELETE FROM person");
+			// Delete previously inserted data
+			statement.executeUpdate("DELETE FROM person");
 
-				// Insert 3 Persons into table. We only insert the non-null values for now.
-				statement.executeUpdate("INSERT INTO person(idperson, lastname, firstname, nickname) VALUES (1, 'Aungkurboribhun','Methika','Fent','0990015588','1 rue','me@g.com','20/01/2000')");
-				statement.executeUpdate("INSERT INTO person(idperson, lastname, firstname, nickname) VALUES (2, 'Yawuth','Araya','Jaja','0990015555','4 rue','jj@g.com','02/01/2001')");
-				statement.executeUpdate("INSERT INTO person(idperson, lastname, firstname, nickname) VALUES (3, 'A','Alice','Alice','0990018888','5 rue','aa@g.com','20/01/2002')");
-				}
+			// Insert 3 Persons into table. We only insert the non-null values for now.
+			statement.executeUpdate("INSERT INTO person VALUES (1, 'Aungkurboribhun','Methika','Fent','0990015588','1 rue','me@g.com','02/01/2000')");
+			statement.executeUpdate("INSERT INTO person VALUES (2, 'Yawuth','Araya','Jaja','0990015555','4 rue','jj@g.com','02/01/2001')");
+			statement.executeUpdate("INSERT INTO person VALUES (3, 'A','Alice','Alice','0990018888','5 rue','aa@g.com','07/01/2002')");
+
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(e);
+			System.out.println("Connection failed at App");
 		}
 	}
 	@Override
 	public void start(Stage stage) throws IOException {
 		stage.setTitle("The Contact form");
 		mainlayout = loadFXML("MainLayout");
-		scene = new Scene(mainlayout, 640, 480);
+		scene = new Scene(mainlayout, 640, 540);
 		stage.setScene(scene);
 		stage.show();
 		App.showView("HomeScreen");

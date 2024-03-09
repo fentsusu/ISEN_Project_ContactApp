@@ -8,7 +8,10 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.AddController">
+<?import javafx.scene.layout.HBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.AddController"
+      spacing="10" style="-fx-padding: 10px;">
+
     <Label text="Last Name:" layoutX="50" layoutY="20"/>
     <TextField fx:id="lastNameField" layoutX="150" layoutY="20" promptText="Enter last name"/>
 
@@ -18,20 +21,34 @@
     <Label text="Nickname:" layoutX="50" layoutY="120"/>
     <TextField fx:id="nickNameField" layoutX="150" layoutY="120" promptText="Enter nickname"/>
 
-    <Label text="Phone Number:" layoutX="50" layoutY="170"/>
+    <!--    <Label text="Phone Number:" layoutX="50" layoutY="170"/>-->
+    <HBox>
+        <Label text="Phone Number:"/>
+        <Label text="  ** Must contain 10 number i.e. 01 23 45 67 89" style="-fx-text-fill: blue;"/>
+    </HBox>
     <TextField fx:id="phoneNumberField" layoutX="150" layoutY="170" promptText="Enter phone number"/>
 
     <Label text="Address:" layoutX="50" layoutY="220"/>
     <TextField fx:id="addressField" layoutX="150" layoutY="220" promptText="Enter address"/>
 
-    <Label text="Email Address:" layoutX="50" layoutY="270"/>
+    <!--    <Label text="Email Address:" layoutX="50" layoutY="270"/>-->
+    <HBox>
+        <Label text="Email Address:"/>
+        <Label text="  **i.e. celien.fleur@student.junia.com" style="-fx-text-fill: blue;"/>
+    </HBox>
     <TextField fx:id="emailAddressField" layoutX="150" layoutY="270" promptText="Enter email address"/>
 
-    <Label text="Birth Date:" layoutX="300" layoutY="20"/>
+    <HBox>
+        <Label text="Birth Date:"/>
+        <Label text="  ** must be in DD/MM/YYYY format" style="-fx-text-fill: blue;"/>
+    </HBox>
     <DatePicker fx:id="birthDatePicker" layoutX="400" layoutY="20"/>
 
-    <Button layoutX="300" layoutY="70" onAction="#addPerson" text="Add Person"/>
+    <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
+        <Button layoutX="300" layoutY="70" onAction="#addPerson" text="Add Person"/>
 
-    <Button layoutX="300" layoutY="70" onAction="#goBack" text="Back"/>
+        <Button layoutX="300" layoutY="70" onAction="#goBack" text="Back"/>
+    </HBox>
 
 </VBox>
+

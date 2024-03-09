@@ -24,7 +24,13 @@ public class PeopleFactory {
                 String[] record = line.split(",");
                 Person person = new Person();
                 person.setLastName(record[2]);
-                person.setFirstName(record[4]);
+                person.setFirstName(record[3]);
+                person.setNickName(record[3]);
+                person.setPhoneNumber(record[4]);
+                person.setAddress(record[5]);
+                //person.getEmailAddress(record[6]);
+
+
                 //person.setBirthDate(Date(record[9]));
                 people.add(person);
             }

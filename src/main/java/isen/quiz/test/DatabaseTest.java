@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DatabaseTest {
     @Test
     public void testConnection() {
-        Database database = new Database("jdbc:sqlite:sqlitedb");
+        Database database = new Database("jdbc:sqlite:sqlite.db");
         assertNotNull(database);
     }
 }

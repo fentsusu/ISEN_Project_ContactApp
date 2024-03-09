@@ -1,21 +1,13 @@
 package isen.quiz.view;
 
 import isen.quiz.App;
-import isen.quiz.model.Database;
-import isen.quiz.util.PersonDAO;
-import isen.quiz.model.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TextField;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.sql.*;
 
 public class AddController {
 
@@ -34,27 +26,36 @@ public class AddController {
     @FXML
     private TextField emailAddressField;
     @FXML
-    private DatePicker birthDatePicker;
-    private Database database;
+    private TextField birthDateField;
 
-    public void initialize() {
-        // Set the default value to today's date
-        birthDatePicker.setValue(LocalDate.now());
-    }
+    public void initialize() {}
     public void addPerson() {
-        try {
+        String url = "jdbc:sqlite:sqlite.db";
+        try (Connection connection = DriverManager.getConnection(url)) {
             String lastName = lastNameField.getText();
             String firstName = firstNameField.getText();
             String nickName = nickNameField.getText();
             String phoneNumber = phoneNumberField.getText();
             String address = addressField.getText();
             String emailAddress = emailAddressField.getText();
-            Date birthDate;
-            birthDate = Date.valueOf(birthDatePicker.getValue());
+            String birthDate = birthDateField.getText();
 
-            Person person = new Person(lastName, firstName, nickName, phoneNumber, address, emailAddress, birthDate);
-            database.addPerson(person);
+            String addquery = "INSERT INTO person(lastname, firstname, nickname, " +
+                    "phone_number, address, email_address, birth_date) VALUES (?,?,?,?,?,?,?)";
+            try (PreparedStatement stmt = connection.prepareStatement(addquery, Statement.RETURN_GENERATED_KEYS)) {
+                stmt.setString(1, lastName);
+                stmt.setString(2, firstName);
+                stmt.setString(3, nickName);
+                stmt.setString(4, phoneNumber);
+                stmt.setString(5, address);
+                stmt.setString(6, emailAddress);
+                stmt.setString(7, birthDate);
 
+                stmt.executeUpdate();
+            }
+            catch (SQLException e) {
+
+            }
             showSuccessAlert("Person has been added!");
         } catch (Exception e) {
             showErrorAlert("Error adding person: " + e.getMessage());

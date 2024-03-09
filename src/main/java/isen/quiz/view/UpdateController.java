@@ -3,6 +3,7 @@ package isen.quiz.view;
 import isen.quiz.App;
 import isen.quiz.model.Database;
 import isen.quiz.model.Person;
+import isen.quiz.util.PersonDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
@@ -31,8 +32,11 @@ public class UpdateController {
     private void goBack(){
         App.showView("HomeScreen");
     }
-    private Database database;
-    public void PersonDAO() {
+    private PersonDAO personDAO;
+    public Database database;
+    @FXML
+    public void initialize() {
+        PersonDAO personDAO = new PersonDAO(); // Initialize the DAO
         database = new Database("jdbc:sqlite:sqlite.db");
     }
     public void updatePerson() {
@@ -43,8 +47,8 @@ public class UpdateController {
         String phoneNumber = phoneNumberField.getText();
         String address = addressField.getText();
         String emailAddress = emailAddressField.getText();
-        Date birthDate;
-        birthDate = Date.valueOf(birthDatePicker.getValue());
+
+        String birthDate = String.valueOf(Date.valueOf(birthDatePicker.getValue()));
 
         Person person = new Person(id, lastName, firstName, nickName, phoneNumber, address, emailAddress, birthDate);
         database.updatePerson(person);

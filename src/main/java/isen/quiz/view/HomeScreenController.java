@@ -1,8 +1,9 @@
 package isen.quiz.view;
 
-import java.io.IOException;
 import isen.quiz.App;
 import javafx.fxml.FXML;
+
+import java.io.IOException;
 
 public class HomeScreenController {
 

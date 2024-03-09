@@ -33,5 +33,9 @@
     <Label text="Birth Date:" layoutX="300" layoutY="20"/>
     <DatePicker fx:id="birthDatePicker" layoutX="400" layoutY="20"/>
 
-    <Button text="Update Person" onAction="#updatePerson"/>
+    <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
+        <Button text="Update Person" onAction="#updatePerson"/>
+
+        <Button layoutX="300" layoutY="70" onAction="#goBack" text="Back"/>
+    </HBox>
 </VBox>

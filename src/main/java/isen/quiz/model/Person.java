@@ -1,5 +1,5 @@
 package isen.quiz.model;
-import java.util.Date;
+
 import java.util.regex.Pattern;
 public class Person {
 
@@ -10,10 +10,14 @@ public class Person {
     private String phoneNumber;
     private String address;
     private String emailAddress;
-    private Date birthDate;
+    //private Date birthDate;
+    private String birthDate;
+
 
     public Person(){}
-    public Person(int id, String lastName, String firstName, String nickName, String phoneNumber, String address, String emailAddress, Date birthDate) {
+    public Person(int id, String lastName, String firstName, String nickName,
+                  String phoneNumber, String address, String emailAddress, String birthDate) {
+
         this.id = id;
         validateAndSetFirstName(firstName);
         validateAndSetLastName(lastName);
@@ -24,7 +28,8 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public Person(String lastName, String firstName, String nickName, String phoneNumber, String address, String emailAddress, java.sql.Date birthDate) {
+    public Person(String lastName, String firstName, String nickName,
+                  String phoneNumber, String address, String emailAddress, String birthDate) {
         validateAndSetFirstName(firstName);
         validateAndSetLastName(lastName);
         this.nickName = nickName;
@@ -33,6 +38,7 @@ public class Person {
         validateAndSetEmailAddress(emailAddress);
         this.birthDate = birthDate;
     }
+
     //Getters and Setters
     public int getId() {
         return id;
@@ -74,9 +80,7 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAddress() {
-        return address;
-    }
+    public String getAddress() {return address;}
 
     public void setAddress(String address) {
         this.address = address;
@@ -90,11 +94,11 @@ public class Person {
         this.emailAddress = emailAddress;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
     //Method for Input Validation
