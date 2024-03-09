@@ -3,6 +3,8 @@ module isen.quiz {
     requires javafx.fxml;
     requires java.sql;
     requires org.junit.jupiter.api;
+    requires org.xerial.sqlitejdbc;
+    requires junit;
 
     opens isen.quiz to javafx.fxml;
     // All our views will be in this package, that must be accessible by JavaFX

@@ -1,12 +1,12 @@
 package isen.quiz.view;
 
+import isen.quiz.App;
 import isen.quiz.model.Database;
 import isen.quiz.model.Person;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 import java.sql.Date;
 
@@ -27,12 +27,14 @@ public class UpdateController {
     private TextField emailAddressField;
     @FXML
     private DatePicker birthDatePicker;
-    private Database database;
-
-    public UpdateController() {
-        database = new Database("jdbc:sqlite:sqlitedb");
+    @FXML
+    private void goBack(){
+        App.showView("HomeScreen");
     }
-
+    private Database database;
+    public void PersonDAO() {
+        database = new Database("jdbc:sqlite:sqlite.db");
+    }
     public void updatePerson() {
         int id = Integer.parseInt(idField.getText());
         String lastName = lastNameField.getText();
@@ -47,11 +49,21 @@ public class UpdateController {
         Person person = new Person(id, lastName, firstName, nickName, phoneNumber, address, emailAddress, birthDate);
         database.updatePerson(person);
 
-        Alert alert = new Alert(AlertType.INFORMATION);
+        showSuccessAlert("Person has been updated!");
+    }
+    private void showSuccessAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);
-        alert.setContentText("Person has been updated!");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
+    private void showErrorAlert(String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
         alert.showAndWait();
     }
 }

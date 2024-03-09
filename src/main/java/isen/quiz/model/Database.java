@@ -1,5 +1,8 @@
 package isen.quiz.model;
 
+import isen.quiz.service.DataSourceFactory;
+import javafx.scene.control.Alert;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,23 +17,53 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
-
     public void addPerson(Person person) {
-        String sql = "INSERT INTO person(lastname, firstname, nickname, phone_number, address, email_address, birth_date) VALUES(?,?,?,?,?,?,?)";
+        try (Connection connection = DataSourceFactory.getDataSource().getConnection()) {
+            String sqlQuery = "INSERT INTO person(lastname, firstname, nickname, phone_number, address, email_address, birth_date) VALUES (?,?,?,?,?,?,?)";
+            try (PreparedStatement stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
+                stmt.setString(1, person.getLastName());
+                stmt.setString(2, person.getFirstName());
+                stmt.setString(3, person.getNickName());
+                stmt.setString(4, person.getPhoneNumber());
+                stmt.setObject(5, person.getAddress());
+                stmt.setString(6, person.getEmailAddress());
+                stmt.setObject(7, person.getBirthDate());
 
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, person.getLastName());
-            pstmt.setString(2, person.getFirstName());
-            pstmt.setString(3, person.getNickName());
-            pstmt.setString(4, person.getPhoneNumber());
-            pstmt.setString(5, person.getAddress());
-            pstmt.setString(6, person.getEmailAddress());
-            pstmt.setDate(7, new Date(person.getBirthDate().getTime()));
-            pstmt.executeUpdate();
+                stmt.executeUpdate();
+
+//                try(ResultSet ids = stmt.getGeneratedKeys()) {
+//                    if (ids.next()) {
+//                        Integer generatedId = ids.getInt(1);
+//                        person.setId(generatedId);
+//                        showSuccessAlert("Person has been added!");
+//                    } else {
+//                        throw new SQLException("Failed to add new person to contacts.");
+//                    }
+//                }
+
+            }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
+
+
+//    public void addPerson1(Person person) {
+//        String sql = "INSERT INTO person(lastname, firstname, nickname, phone_number, address, email_address, birth_date) VALUES(?,?,?,?,?,?,?)";
+//
+//        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+//            pstmt.setString(1, person.getLastName());
+//            pstmt.setString(2, person.getFirstName());
+//            pstmt.setString(3, person.getNickName());
+//            pstmt.setString(4, person.getPhoneNumber());
+//            pstmt.setString(5, person.getAddress());
+//            pstmt.setString(6, person.getEmailAddress());
+//            pstmt.setDate(7, new Date(person.getBirthDate().getTime()));
+//            pstmt.executeUpdate();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
     public void updatePerson(Person person) {
         String sql = "UPDATE person SET lastname = ?, firstname = ?, nickname = ?, phone_number = ?, address = ?, email_address = ?, birth_date = ? WHERE idperson = ?";
@@ -86,4 +119,22 @@ public class Database {
 
         return persons;
     }
+    private void showSuccessAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showErrorAlert(String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText(errorMessage);
+        alert.showAndWait();
+    }
 }
+
+
+

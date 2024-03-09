@@ -12,7 +12,7 @@ public class Person {
     private String emailAddress;
     private Date birthDate;
 
-
+    public Person(){}
     public Person(int id, String lastName, String firstName, String nickName, String phoneNumber, String address, String emailAddress, Date birthDate) {
         this.id = id;
         validateAndSetFirstName(firstName);
@@ -24,12 +24,7 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public Person() {
-
-    }
-
     public Person(String lastName, String firstName, String nickName, String phoneNumber, String address, String emailAddress, java.sql.Date birthDate) {
-
         validateAndSetFirstName(firstName);
         validateAndSetLastName(lastName);
         this.nickName = nickName;
@@ -38,7 +33,7 @@ public class Person {
         validateAndSetEmailAddress(emailAddress);
         this.birthDate = birthDate;
     }
-
+    //Getters and Setters
     public int getId() {
         return id;
     }
@@ -102,7 +97,7 @@ public class Person {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
-
+    //Method for Input Validation
     private void validateAndSetFirstName(String firstName) {
         if (firstName == null || firstName.isEmpty() || firstName.length() > 50) {
             throw new IllegalArgumentException("First name must be non-empty and less than 50 characters.");
