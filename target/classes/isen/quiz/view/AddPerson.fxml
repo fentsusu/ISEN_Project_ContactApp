@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Label?>
+
+<!--<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.AddController">-->
+<!--    <Label text="Last Name:" layoutX="50" layoutY="20"/>-->
+<!--    <TextField fx:id="lastNameField" layoutX="150" layoutY="20" promptText="Enter last name"/>-->
+
+<!--    <Label text="First Name:" layoutX="50" layoutY="70"/>-->
+<!--    <TextField fx:id="firstNameField" layoutX="150" layoutY="70" promptText="Enter first name"/>-->
+
+<!--    <Label text="Nickname:" layoutX="50" layoutY="120"/>-->
+<!--    <TextField fx:id="nickNameField" layoutX="150" layoutY="120" promptText="Enter nickname"/>-->
+
+<!--    <Label text="Phone Number:" layoutX="50" layoutY="170"/>-->
+<!--    <TextField fx:id="phoneNumberField" layoutX="150" layoutY="170" promptText="Enter phone number"/>-->
+
+<!--    <Label text="Address:" layoutX="50" layoutY="220"/>-->
+<!--    <TextField fx:id="addressField" layoutX="150" layoutY="220" promptText="Enter address"/>-->
+
+<!--    <Label text="Email Address:" layoutX="50" layoutY="270"/>-->
+<!--    <TextField fx:id="emailAddressField" layoutX="150" layoutY="270" promptText="Enter email address"/>-->
+
+<!--    <Label text="Birth Date:" layoutX="300" layoutY="20"/>-->
+<!--    <TextField fx:id="birthDateField" layoutX="400" layoutY="20"/>-->
+
+<!--    <Button layoutX="300" layoutY="70" onAction="#addPerson" text="Add Person"/>-->
+
+<!--    <Button layoutX="300" layoutY="70" onAction="#goBack" text="Back"/>-->
+
+<!--</VBox>-->
+
+<?import javafx.scene.layout.HBox?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.AddController" spacing="10" style="-fx-padding: 10px;">
+
+    <Label text="Last Name :" layoutX="50" layoutY="20"/>
+    <TextField fx:id="lastNameField" layoutX="150" layoutY="20" promptText="Enter last name"/>
+
+    <Label text="First Name :" layoutX="50" layoutY="70"/>
+    <TextField fx:id="firstNameField" layoutX="150" layoutY="70" promptText="Enter first name"/>
+
+    <Label text="Nickname :" layoutX="50" layoutY="120"/>
+    <TextField fx:id="nickNameField" layoutX="150" layoutY="120" promptText="Enter nickname"/>
+
+    <HBox>
+        <Label text="Phone Number :"/>
+        <Label text="  i.e. 06 76 40 33 08 format" style="-fx-text-fill: white;"/>
+    </HBox>
+    <TextField fx:id="phoneNumberField" layoutX="150" layoutY="170" promptText="Enter phone number"/>
+
+    <Label text="Address :" layoutX="50" layoutY="220"/>
+    <TextField fx:id="addressField" layoutX="150" layoutY="220" promptText="Enter address"/>
+
+    <HBox>
+        <Label text="Email Address :"/>
+        <Label text="  i.e. celine.dior@student.junia.com" style="-fx-text-fill: white;"/>
+    </HBox>
+    <TextField fx:id="emailAddressField" layoutX="150" layoutY="270" promptText="Enter email address"/>
+
+    <HBox>
+        <Label text="Birth Date:"/>
+        <Label text="  ** Must be in DD/MM/YYYY format" style="-fx-text-fill: white;"/>
+    </HBox>
+    <TextField fx:id="birthDateField" layoutX="400" layoutY="20"/>
+
+
+
+    <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
+        <Button text="Add Person" onAction="#addPerson" prefHeight="40.0" prefWidth="200.0"/>
+        <Button id="BackButton"
+                mnemonicParsing="false"
+                onAction="#goBack"
+                prefHeight="40.0" prefWidth="200.0"
+                text="Back"/>
+    </HBox>
+
+
+</VBox>
