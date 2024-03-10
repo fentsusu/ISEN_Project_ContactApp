@@ -48,7 +48,7 @@
 
     <HBox>
         <Label text="Phone Number :"/>
-        <Label text="  i.e. 06 76 40 33 08 format" style="-fx-text-fill: blue;"/>
+        <Label text="  i.e. 06 76 40 33 08 format" style="-fx-text-fill: white;"/>
     </HBox>
     <TextField fx:id="phoneNumberField" layoutX="150" layoutY="170" promptText="Enter phone number"/>
 
@@ -57,13 +57,13 @@
 
     <HBox>
         <Label text="Email Address :"/>
-        <Label text="  i.e. celine.dior@student.junia.com" style="-fx-text-fill: blue;"/>
+        <Label text="  i.e. celine.dior@student.junia.com" style="-fx-text-fill: white;"/>
     </HBox>
     <TextField fx:id="emailAddressField" layoutX="150" layoutY="270" promptText="Enter email address"/>
 
     <HBox>
         <Label text="Birth Date:"/>
-        <Label text="  ** Must be in DD/MM/YYYY format" style="-fx-text-fill: blue;"/>
+        <Label text="  ** Must be in DD/MM/YYYY format" style="-fx-text-fill: white;"/>
     </HBox>
     <TextField fx:id="birthDateField" layoutX="400" layoutY="20"/>
 

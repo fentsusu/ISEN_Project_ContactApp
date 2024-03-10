@@ -86,6 +86,7 @@ package isen.quiz.test;
 //    }
 //}
 
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -106,11 +107,12 @@ public class FunctionTest {
     public void runApplication() {
     }
 
-    private static void initializeDatabase() throws SQLException {
+    public void initializeDatabase() throws SQLException {
         String url = "jdbc:sqlite:sqlite.db";
         try (Connection connection = DriverManager.getConnection(url)) {
             Statement statement = connection.createStatement();
 
+            statement.executeUpdate("DROP TABLE person;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS person (\n" +
                     "    idperson INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
                     "    lastname VARCHAR(45) NOT NULL,\n" +

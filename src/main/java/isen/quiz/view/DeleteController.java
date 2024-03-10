@@ -32,6 +32,7 @@ public class DeleteController {
 
                 if (affectedRows > 0) {
                     showSuccessAlert("Person has been deleted!");
+                    // The id is unique when delete and add new person id not use the old one
                 } else {
                     showErrorAlert("No person found with the given ID.");
                 }
