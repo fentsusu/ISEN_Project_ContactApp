@@ -27,7 +27,7 @@
     <TextField fx:id="emailAddressField" layoutX="150" layoutY="270" promptText="Enter email address"/>
 
     <Label text="Birth Date:" layoutX="300" layoutY="20"/>
-    <DatePicker fx:id="birthDatePicker" layoutX="400" layoutY="20"/>
+    <TextField fx:id="birthDateField" layoutX="400" layoutY="20"/>
 
     <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
         <Button text="Update Person" onAction="#updatePerson"/>

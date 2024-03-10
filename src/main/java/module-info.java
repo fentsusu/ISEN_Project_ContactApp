@@ -4,6 +4,7 @@ module isen.quiz {
     requires java.sql;
     requires org.junit.jupiter.api;
     requires org.xerial.sqlitejdbc;
+    requires assertj.core;
 
     opens isen.quiz.model to javafx.base;
     opens isen.quiz to javafx.fxml;

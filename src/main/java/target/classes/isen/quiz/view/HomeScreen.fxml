@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.quiz.view.HomeScreenController">
+      <Text layoutX="194.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose action what you want!" style="-fx-font-family: 'Century Gothic'; -fx-font-weight: bold; -fx-font-size: 40px;" wrappingWidth="211.33935546875" AnchorPane.topAnchor="20.0" />
+
+      <Button id="AddButton" layoutX="150.0" layoutY="173.0" mnemonicParsing="false" onAction="#addButton" prefHeight="130.0" prefWidth="130.0" style="-fx-font-family: 'Century Gothic'; -fx-font-weight: bold; -fx-font-size: 17px;" text="Add person" />
+
+      <Button id="ListButton" layoutX="338.0" layoutY="173.0" mnemonicParsing="false" onAction="#listButton" prefHeight="130.0" prefWidth="130.0" style="-fx-font-family: 'Century Gothic'; -fx-font-weight: bold; -fx-font-size: 17px;" text="See the List" />
+
+</AnchorPane>

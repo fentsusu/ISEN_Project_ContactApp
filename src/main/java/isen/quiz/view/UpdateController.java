@@ -1,14 +1,13 @@
 package isen.quiz.view;
 
 import isen.quiz.App;
-import isen.quiz.model.Database;
-import isen.quiz.model.Person;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-import java.sql.Date;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class UpdateController {
     @FXML
@@ -26,34 +25,42 @@ public class UpdateController {
     @FXML
     private TextField emailAddressField;
     @FXML
-    private DatePicker birthDatePicker;
+    private TextField birthDateField;
     @FXML
     private void goBack(){
         App.showView("HomeScreen");
     }
 
-    public Database database;
-    @FXML
-    public void initialize() {
-        database = new Database("jdbc:sqlite:sqlite.db");
-    }
     public void updatePerson() {
-        int id = Integer.parseInt(idField.getText());
-        String lastName = lastNameField.getText();
-        String firstName = firstNameField.getText();
-        String nickName = nickNameField.getText();
-        String phoneNumber = phoneNumberField.getText();
-        String address = addressField.getText();
-        String emailAddress = emailAddressField.getText();
+        String url = "jdbc:sqlite:sqlite.db";
+    try (Connection connection = DriverManager.getConnection(url)) {
+        String sql = "UPDATE person SET lastname = ?, firstname = ?, nickname = ?, phone_number = ?, address = ?, email_address = ?, birth_date = ? WHERE idperson = ?";
 
-        String birthDate = String.valueOf(Date.valueOf(birthDatePicker.getValue()));
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            // Set parameters for the prepared statement from your person object
+            pstmt.setString(1, lastNameField.getText());
+            pstmt.setString(2, firstNameField.getText());
+            pstmt.setString(3, nickNameField.getText());
+            pstmt.setString(4, phoneNumberField.getText());
+            pstmt.setString(5, addressField.getText());
+            pstmt.setString(6, emailAddressField.getText());
+            pstmt.setString(7, birthDateField.getText());
+            pstmt.setInt(8, Integer.parseInt(idField.getText()));
 
-        Person person = new Person(id, lastName, firstName, nickName, phoneNumber, address, emailAddress, birthDate);
-        //database.updatePerson(person);
+            int affectedRows = pstmt.executeUpdate();
 
-        showSuccessAlert("Person has been updated!");
+            if (affectedRows > 0) {
+                showSuccessAlert("Person has been updated!");
+            } else {
+                showErrorAlert("No person found with the given ID.");
+            }
+        }
+    } catch (Exception e) {
+        showErrorAlert("Error updating person: " + e.getMessage());
     }
-    private void showSuccessAlert(String message) {
+}
+
+private void showSuccessAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(null);

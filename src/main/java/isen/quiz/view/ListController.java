@@ -1,6 +1,5 @@
 package isen.quiz.view;
 
-import isen.quiz.model.Database;
 import isen.quiz.model.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,8 +29,6 @@ public class ListController {
     private TableColumn<Person, String> emailAddressColumn;
     @FXML
     private TableColumn<Person, String> birthDateColumn;
-
-    public Database database;
 
     @FXML
     public void initialize() throws SQLException {

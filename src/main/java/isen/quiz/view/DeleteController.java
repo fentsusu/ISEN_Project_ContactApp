@@ -1,11 +1,14 @@
 package isen.quiz.view;
 
 import isen.quiz.App;
-import isen.quiz.model.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class DeleteController {
 
@@ -16,15 +19,23 @@ public class DeleteController {
     private void goBack(){
         App.showView("HomeScreen");
     }
-    private Database database;
-    public void PersonDAO() {
-        database = new Database("jdbc:sqlite:sqlite.db");
-    }
 
     public void deletePerson() {
-        try {
+        String url = "jdbc:sqlite:sqlite.db";
+        try (Connection connection = DriverManager.getConnection(url)) {
             int id = Integer.parseInt(idField.getText());
-            showSuccessAlert("Person has been deleted!");
+
+            String sql = "DELETE FROM person WHERE idperson = ?";
+            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                pstmt.setInt(1, id);
+                int affectedRows = pstmt.executeUpdate();
+
+                if (affectedRows > 0) {
+                    showSuccessAlert("Person has been deleted!");
+                } else {
+                    showErrorAlert("No person found with the given ID.");
+                }
+            }
         } catch (Exception e) {
             showErrorAlert("Error deleting person: " + e.getMessage());
         }

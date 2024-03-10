@@ -33,17 +33,16 @@ public class App extends Application {
 					"    email_address VARCHAR(150) NULL,\n" +
 					"    birth_date DATE NULL);");
 
-			// Delete previously inserted data
-			statement.executeUpdate("DELETE FROM person");
-
-			// Insert 3 Persons into table. Insert the non-null.
-			statement.executeUpdate("INSERT INTO person VALUES (1, 'Aungkurboribhun','Methika','Fent','0990015588','1 rue','me@g.com','02/01/2000')");
-			statement.executeUpdate("INSERT INTO person VALUES (2, 'Yawuth','Araya','Jaja','0990015555','4 rue','jj@g.com','02/01/2001')");
-			statement.executeUpdate("INSERT INTO person VALUES (3, 'A','Alice','Alice','0990018888','5 rue','aa@g.com','07/01/2002')");
+//			// Delete any previously inserted data from the 'person' table
+//			statement.executeUpdate("DELETE FROM person");
+//
+//			// Insert 3 Persons into table. Insert the non-null
+//			statement.executeUpdate("INSERT INTO person VALUES (1, 'Aungkurboribhun','Methika','Fent','0990015588','1 rue','me@g.com','02/01/2000')");
+//			statement.executeUpdate("INSERT INTO person VALUES (2, 'Yawuth','Araya','Jaja','0990015555','4 rue','jj@g.com','02/01/2001')");
+//			statement.executeUpdate("INSERT INTO person VALUES (3, 'A','Alice','Alice','0990018888','5 rue','aa@g.com','07/01/2002')");
 
 		} catch (SQLException e) {
 			//e.printStackTrace();
-			System.out.println(e);
 			System.out.println("Connection failed at App");
 		}
 	}
