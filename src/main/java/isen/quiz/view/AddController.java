@@ -54,7 +54,7 @@ public class AddController {
                 stmt.executeUpdate();
             }
             catch (SQLException e) {
-
+                e.printStackTrace();
             }
             showSuccessAlert("Person has been added!");
         } catch (Exception e) {

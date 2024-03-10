@@ -2,7 +2,6 @@ package isen.quiz.view;
 
 import isen.quiz.model.Database;
 import isen.quiz.model.Person;
-import isen.quiz.util.PersonDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,7 +31,6 @@ public class ListController {
     @FXML
     private TableColumn<Person, String> birthDateColumn;
 
-    private PersonDAO personDAO;
     public Database database;
 
     @FXML
@@ -43,16 +41,6 @@ public class ListController {
 
         listPersons();
 
-        // Bind table columns to Person properties
-//        idColumn.setCellValueFactory(new PropertyValueFactory<>("idperson"));
-//        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-//        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-//        nickNameColumn.setCellValueFactory(new PropertyValueFactory<>("nickName"));
-//        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phone_number"));
-//        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-//        emailAddressColumn.setCellValueFactory(new PropertyValueFactory<>("email_address"));
-//        birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birth_date"));
-
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -61,7 +49,6 @@ public class ListController {
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         emailAddressColumn.setCellValueFactory(new PropertyValueFactory<>("emailAddress"));
         birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
-
 
         try {
             personTable.setItems(listPersons()); // Bind the ObservableList to the TableView

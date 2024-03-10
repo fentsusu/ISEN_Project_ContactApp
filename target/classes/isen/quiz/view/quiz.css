@@ -1,0 +1,38 @@
+/* สีของพื้นหลัง */
+.root {
+    -fx-background-image: url("https://img.freepik.com/vecteurs-libre/fond-ciel-pastel-aquarelle-peint-main_23-2148902771.jpg?size=626&ext=jpg");
+    -fx-background-size: cover;
+}
+
+/* ขนาดและสีของตัวอักษรสำหรับ Label */
+.label {
+    -fx-font-size: 12px; /* ขนาดตัวอักษร */
+    -fx-text-fill: #000000; /* สีข้อความ */
+    -fx-font-family: "Century Gothic";
+    -fx-font-weight: bold;
+}
+
+/* สีของ TextField */
+.text-field {
+    -fx-background-color: #ffffff; /* สีขาว */
+    -fx-border-color: #cccccc; /* สีเทาอ่อน */
+    -fx-border-width: 1px; /* ความกว้างของเส้นขอบ */
+    -fx-font-family: "Century Gothic";
+}
+
+/* สไตล์ของปุ่ม */
+.button {
+    -fx-background-image: url("https://i.pinimg.com/564x/6c/05/10/6c0510abf49e0c7eb3ef3618f7246d7a.jpg");
+    -fx-background-size: cover;
+    /*-fx-background-color: #FFCCFF; !* สีเขียว *!*/
+    -fx-text-fill: #000000; /* สีข้อความ */
+    -fx-font-family: "Century Gothic"; /* ใช้ Open Sans */
+    -fx-font-size: 14px; /* ขนาดตัวอักษร */
+    -fx-font-weight: bold;
+}
+
+/* สไตล์ของปุ่มเมื่อเมาส์ Hover อยู่ */
+.button:hover {
+    -fx-background-image: url("https://i.pinimg.com/564x/d1/3a/cb/d13acb383715b94bba5302a4bc9506f5.jpg");
+    -fx-background-size: cover;
+}

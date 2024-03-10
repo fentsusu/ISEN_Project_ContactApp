@@ -24,7 +24,6 @@ public class DeleteController {
     public void deletePerson() {
         try {
             int id = Integer.parseInt(idField.getText());
-            //database.deletePerson(id);
             showSuccessAlert("Person has been deleted!");
         } catch (Exception e) {
             showErrorAlert("Error deleting person: " + e.getMessage());

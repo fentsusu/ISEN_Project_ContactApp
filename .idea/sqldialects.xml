@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/isen/quiz/model/Database.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/isen/quiz/test/FunctionTest.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/isen/quiz/util/PersonDAO.java" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/main/java/isen/quiz/view/ListController.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/isen/quiz/view/AddController.java" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/java/isen/quiz/view/ListController.java" dialect="SQLite" />
   </component>
 </project>

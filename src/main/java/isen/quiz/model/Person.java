@@ -10,7 +10,6 @@ public class Person {
     private String phoneNumber;
     private String address;
     private String emailAddress;
-    //private Date birthDate;
     private String birthDate;
 
 
