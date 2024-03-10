@@ -15,7 +15,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.DeleteController">
     <Text>Enter the ID of person to DELETE</Text>
     <TextField fx:id="idField" promptText="Enter the ID of person to DELETE"/>
-
+    <style>-fx-font-family: 'Century Gothic'; -fx-font-weight: bold; -fx-font-size: 15px;</style>
     <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
         <Button text="Delete Person"
                 onAction="#deletePerson"
