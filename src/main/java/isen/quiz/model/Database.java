@@ -2,7 +2,6 @@ package isen.quiz.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Database {
@@ -40,34 +39,34 @@ public class Database {
 //        }
 //    }
 
-    public void updatePerson(Person person) {
-        String sql = "UPDATE person SET lastname = ?, firstname = ?, nickname = ?, phone_number = ?, address = ?, email_address = ?, birth_date = ? WHERE idperson = ?";
+//    public void updatePerson(Person person) {
+//        String sql = "UPDATE person SET lastname = ?, firstname = ?, nickname = ?, phone_number = ?, address = ?, email_address = ?, birth_date = ? WHERE idperson = ?";
+//
+//        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+//            pstmt.setString(1, person.getLastName());
+//            pstmt.setString(2, person.getFirstName());
+//            pstmt.setString(3, person.getNickName());
+//            pstmt.setString(4, person.getPhoneNumber());
+//            pstmt.setString(5, person.getAddress());
+//            pstmt.setString(6, person.getEmailAddress());
+//            pstmt.setString(7, person.getBirthDate());
+//            pstmt.setInt(8, person.getId());
+//            pstmt.executeUpdate();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, person.getLastName());
-            pstmt.setString(2, person.getFirstName());
-            pstmt.setString(3, person.getNickName());
-            pstmt.setString(4, person.getPhoneNumber());
-            pstmt.setString(5, person.getAddress());
-            pstmt.setString(6, person.getEmailAddress());
-            pstmt.setString(7, person.getBirthDate());
-            pstmt.setInt(8, person.getId());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public void deletePerson(int id) {
-        String sql = "DELETE FROM person WHERE idperson = ?";
-
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+//    public void deletePerson(int id) {
+//        String sql = "DELETE FROM person WHERE idperson = ?";
+//
+//        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+//            pstmt.setInt(1, id);
+//            pstmt.executeUpdate();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
 //    public List<Person> listPersons() {
 //        String sql = "SELECT * FROM person";

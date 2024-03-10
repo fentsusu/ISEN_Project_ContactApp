@@ -5,10 +5,9 @@ module isen.quiz {
     requires org.junit.jupiter.api;
     requires org.xerial.sqlitejdbc;
 
-
+    opens isen.quiz.model to javafx.base;
     opens isen.quiz to javafx.fxml;
     opens isen.quiz.view to javafx.fxml;
-    opens isen.quiz.test to org.junit.jupiter;
 
     exports isen.quiz;
 }

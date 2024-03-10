@@ -23,7 +23,6 @@ public class DataSourceFactory {
         }
         return dataSource;
     }
-
     public static synchronized Connection getConnection() throws SQLException {
         if (connection == null) {
             String databaseUrl = "jdbc:sqlite:sqlite.db";

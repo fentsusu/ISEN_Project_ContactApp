@@ -4,8 +4,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.AddController">
@@ -28,7 +26,7 @@
     <TextField fx:id="emailAddressField" layoutX="150" layoutY="270" promptText="Enter email address"/>
 
     <Label text="Birth Date:" layoutX="300" layoutY="20"/>
-    <DatePicker fx:id="birthDatePicker" layoutX="400" layoutY="20"/>
+    <TextField fx:id="birthDateField" layoutX="400" layoutY="20"/>
 
     <Button layoutX="300" layoutY="70" onAction="#addPerson" text="Add Person"/>
 

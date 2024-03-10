@@ -101,6 +101,7 @@ public class Person {
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
+
     //Method for Input Validation
     private void validateAndSetFirstName(String firstName) {
         if (firstName == null || firstName.isEmpty() || firstName.length() > 50) {

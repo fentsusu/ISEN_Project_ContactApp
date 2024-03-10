@@ -5,16 +5,9 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.HBox?>
-
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="isen.quiz.view.DeleteController">
     <Text>Enter the ID of person to DELETE</Text>
     <TextField fx:id="idField" promptText="Enter the ID of person to DELETE"/>
-
-    <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
-        <Button text="Delete Person" onAction="#deletePerson"/>
-        <Button layoutX="300" layoutY="70" onAction="#goBack" text="Back"/>
-    </HBox>
-
-
+    <Button text="Delete Person" onAction="#deletePerson"/>
+    <Button layoutX="300" layoutY="70" onAction="#goBack" text="Back"/>
 </VBox>

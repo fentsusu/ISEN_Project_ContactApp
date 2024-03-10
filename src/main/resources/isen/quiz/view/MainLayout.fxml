@@ -13,6 +13,7 @@
 				</Menu>
 				<Menu mnemonicParsing="false" text="Administration">
 					<MenuItem mnemonicParsing="false" onAction="#gotoAddPerson" text="Add person" />
+					<MenuItem mnemonicParsing="false" onAction="#gotoListPerson" text="List person" />
 					<MenuItem mnemonicParsing="false" onAction="#gotoUpdatePerson" text="Update person" />
 					<MenuItem mnemonicParsing="false" onAction="#gotoDeletePerson" text="Delete person" />
 				</Menu>

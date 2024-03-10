@@ -5,7 +5,6 @@ import isen.quiz.model.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 public class DeleteController {
@@ -25,7 +24,7 @@ public class DeleteController {
     public void deletePerson() {
         try {
             int id = Integer.parseInt(idField.getText());
-            database.deletePerson(id);
+            //database.deletePerson(id);
             showSuccessAlert("Person has been deleted!");
         } catch (Exception e) {
             showErrorAlert("Error deleting person: " + e.getMessage());

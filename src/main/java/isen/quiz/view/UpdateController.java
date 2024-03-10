@@ -51,7 +51,7 @@ public class UpdateController {
         String birthDate = String.valueOf(Date.valueOf(birthDatePicker.getValue()));
 
         Person person = new Person(id, lastName, firstName, nickName, phoneNumber, address, emailAddress, birthDate);
-        database.updatePerson(person);
+        //database.updatePerson(person);
 
         showSuccessAlert("Person has been updated!");
     }

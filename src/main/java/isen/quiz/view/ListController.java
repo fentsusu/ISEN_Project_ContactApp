@@ -2,16 +2,15 @@ package isen.quiz.view;
 
 import isen.quiz.model.Database;
 import isen.quiz.model.Person;
-import isen.quiz.service.DataSourceFactory;
 import isen.quiz.util.PersonDAO;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ListController {
     @FXML
@@ -43,9 +42,8 @@ public class ListController {
         Connection connection = DriverManager.getConnection(url);
 
         listPersons();
-//        personDAO = new PersonDAO(); // Initialize the DAO
-//
-//        // Bind table columns to Person properties
+
+        // Bind table columns to Person properties
 //        idColumn.setCellValueFactory(new PropertyValueFactory<>("idperson"));
 //        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 //        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -54,39 +52,58 @@ public class ListController {
 //        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
 //        emailAddressColumn.setCellValueFactory(new PropertyValueFactory<>("email_address"));
 //        birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birth_date"));
-//
-//        refreshTable();
-    }
 
-    public List<Person> listPersons() {
-        String sql = "SELECT * FROM person";
-        List<Person> persons = new ArrayList<>();
-        try (Connection connection = DataSourceFactory.getDataSource().getConnection()) {
-            try (Statement stmt  = connection.createStatement()) {
-                try (ResultSet rs = stmt.executeQuery(sql)) {
-                    while (rs.next()) {
-                        Person person = new Person(
-                                rs.getInt("idperson"),
-                                rs.getString("lastname"),
-                                rs.getString("firstname"),
-                                rs.getString("nickname"),
-                                rs.getString("phone_number"),
-                                rs.getString("address"),
-                                rs.getString("email_address"),
-                                rs.getString("birth_date")
-                        );
-                        persons.add(person);
-                    }
-                }
-            }
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        nickNameColumn.setCellValueFactory(new PropertyValueFactory<>("nickName"));
+        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        emailAddressColumn.setCellValueFactory(new PropertyValueFactory<>("emailAddress"));
+        birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+
+
+        try {
+            personTable.setItems(listPersons()); // Bind the ObservableList to the TableView
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    public ObservableList<Person> listPersons() throws SQLException {
+        String url = "jdbc:sqlite:sqlite.db";
+
+        ObservableList<Person> persons = FXCollections.observableArrayList();
+
+        try (Connection connection = DriverManager.getConnection(url)){
+            Statement stmt = connection.createStatement();
+            String select = "Select * from person";
+            ResultSet rs = stmt.executeQuery(select);
+            System.out.println("Try1111");
+
+
+            while (rs.next()) {
+                Person person = new Person();
+
+                person.setId(rs.getInt("idperson"));
+                person.setLastName(rs.getString("lastName"));
+                person.setFirstName(rs.getString("firstName"));
+                person.setNickName(rs.getString("nickName"));
+                person.setPhoneNumber(rs.getString("phone_number"));
+                person.setAddress(rs.getString("address"));
+                person.setEmailAddress(rs.getString("email_address"));
+                person.setBirthDate(rs.getString("birth_date"));
+
+                persons.add(person);
+                System.out.println("Select Successfully");
+
+            }
+        } catch (Exception e) {
+            //e.printStackTrace();
+            System.out.println(e);
         }
         return persons;
     }
 
-    public void refreshTable() throws SQLException {
-        ObservableList<Person> personList = personDAO.getPersons();
-        personTable.setItems(personList);
-    }
 }
