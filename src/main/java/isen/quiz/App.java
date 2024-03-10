@@ -17,12 +17,16 @@ public class App extends Application {
 	private static Scene scene;
 
 	private static BorderPane mainlayout;
+
+	//initialize the application
 	@Override
 	public void init() throws Exception {
+		//connect to SQLite database
 		String url = "jdbc:sqlite:sqlite.db";
 		try (Connection connection = DriverManager.getConnection(url)) {
 			Statement statement = connection.createStatement();
-
+			statement.executeUpdate("DROP TABLE person;");
+			// Create 'person' table if it doesn't exist
 			statement.executeUpdate("CREATE TABLE IF NOT EXISTS person (\n" +
 					"    idperson INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
 					"    lastname VARCHAR(45) NOT NULL,\n" +
@@ -41,26 +45,33 @@ public class App extends Application {
 //			statement.executeUpdate("INSERT INTO person VALUES (2, 'Yawuth','Araya','Jaja','0990015555','4 rue','jj@g.com','02/01/2001')");
 //			statement.executeUpdate("INSERT INTO person VALUES (3, 'A','Alice','Alice','0990018888','5 rue','aa@g.com','07/01/2002')");
 
+			// Handle database connection errors
 		} catch (SQLException e) {
 			//e.printStackTrace();
 			System.out.println("Connection failed at App");
 		}
 	}
+
+	// start the application
 	@Override
 	public void start(Stage stage) throws IOException {
+		// Set up the main application window
 		stage.setTitle("The Contact form");
 		mainlayout = loadFXML("MainLayout");
 		scene = new Scene(mainlayout, 640, 540);
 		stage.setScene(scene);
 		stage.show();
+		// Display the 'HomeScreen' view
 		App.showView("HomeScreen");
 	}
 
+	// loads an FXML file
 	private static <T> T loadFXML(String fxml) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/isen/quiz/view/" + fxml + ".fxml"));
 		return fxmlLoader.load();
 	}
 
+	//the entry point of the Java application
 	public static void main(String[] args) {
 		launch();
 	}
@@ -69,10 +80,13 @@ public class App extends Application {
 	 * @param rootElement updates the center of our layout with the @rootElement
 	 *                    passed in parameter
 	 */
+
+	//updates the main layout with a specified view
 	public static void showView(String rootElement) {
 		try {
 			mainlayout.setCenter(loadFXML(rootElement));
 		} catch (IOException e) {
+			// Handle errors while loading views
 			throw new IllegalArgumentException(e);
 		}
 	}

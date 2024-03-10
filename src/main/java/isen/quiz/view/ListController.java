@@ -64,8 +64,6 @@ public class ListController {
             Statement stmt = connection.createStatement();
             String select = "Select * from person";
             ResultSet rs = stmt.executeQuery(select);
-            System.out.println("Try1111");
-
 
             while (rs.next()) {
                 Person person = new Person();

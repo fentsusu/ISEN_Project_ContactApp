@@ -56,6 +56,8 @@ public class DeleteController {
         alert.showAndWait();
     }
 
+
+    //for the go back method (navigate to the Homescreen)
     public void goBack(ActionEvent actionEvent) { App.showView("HomeScreen");
     }
 }
