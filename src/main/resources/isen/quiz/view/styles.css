@@ -1,0 +1,86 @@
+/*All Background*/
+.root {
+    /*-fx-background-image: url("https://img.freepik.com/vecteurs-libre/fond-ciel-pastel-aquarelle-peint-main_23-2148902771.jpg?size=626&ext=jpg");*/
+    -fx-background-image: url("https://i.pinimg.com/564x/07/8a/ae/078aae3c2d8308617ce42ec3aff028a6.jpg");
+    -fx-background-size: cover;
+}
+
+/*TableView */ /*List Page*/
+.table-view {
+    /*-fx-background-image: url("https://img.freepik.com/vecteurs-libre/fond-ciel-pastel-aquarelle-peint-main_23-2148902771.jpg?size=626&ext=jpg");*/
+    /*-fx-background-size: cover;*/
+    -fx-background-color:#BCD2EE;
+
+    -fx-border-color: #FFCCFF;
+    -fx-border-width: 1px; /* ความกว้างของเส้นขอบ */
+}
+
+/* สีของ Header ของ TableColumn */
+.table-column .label {
+    /*-fx-background-image: url("https://i.pinimg.com/564x/00/8c/9a/008c9aa68ffcaf570d649c068f111f25.jpg");*/
+    -fx-background-image: url("https://i.pinimg.com/564x/56/50/cf/5650cfcb4568e8f4d1a0372a6e245a14.jpg");
+    -fx-background-size: cover;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Century Gothic";
+    -fx-font-weight: bold;
+}
+
+/* สีของ Cell ใน TableColumn */
+.table-row-cell {
+    -fx-background-color: #FFFAF0;
+    -fx-font-family: "Century Gothic";
+    -fx-text-fill: #696969;
+}
+
+/*Color Cell when selected */
+.table-row-cell:selected {
+    -fx-background-image: url("https://i.pinimg.com/564x/4b/42/a0/4b42a0ebfc915d98aacd0ed4580477b8.jpg");
+    -fx-font-family: "Century Gothic";
+    -fx-font-weight: bold;
+}
+
+/*Color of cell when mouse Hover*/
+.table-row-cell:hover {
+    -fx-background-image: url("https://i.pinimg.com/564x/d6/4b/ff/d64bffda663d6963dad5a5401d07370f.jpg");
+
+}
+
+/*Separator between Cell */
+.table-row-cell:odd {
+    -fx-background-color: #F0FFFF;
+    -fx-text-fill: #696969;
+}
+/*TableView */ /*List Page*/
+
+/*Label */
+.label {
+    -fx-font-size: 12px; /* ขนาดตัวอักษร */
+    -fx-text-fill: #000000; /* สีข้อความ */
+    -fx-font-family: "Century Gothic";
+    -fx-font-weight: bold;
+}
+
+/*TextField */
+.text-field {
+    -fx-background-color: #ffffff; /* สีขาว */
+    -fx-border-color: #cccccc; /* สีเทาอ่อน */
+    -fx-border-width: 1px; /* ความกว้างของเส้นขอบ */
+    -fx-font-family: "Century Gothic";
+}
+
+/*Button*/
+.button {
+    -fx-background-image: url("https://i.pinimg.com/564x/72/76/d7/7276d72fdc9ec9c6d9f1962d8a5ce0ca.jpg");
+    -fx-background-size: cover;
+    /*-fx-background-color: #FFCCFF; !* สีเขียว *!*/
+    -fx-text-fill: #000000; /* สีข้อความ */
+    -fx-font-family: "Century Gothic"; /* ใช้ Open Sans */
+    -fx-font-size: 14px; /* ขนาดตัวอักษร */
+    -fx-font-weight: bold;
+}
+
+/*Hover*/
+.button:hover {
+    -fx-background-image: url("https://i.pinimg.com/564x/d1/3a/cb/d13acb383715b94bba5302a4bc9506f5.jpg");
+    -fx-background-size: cover;
+}

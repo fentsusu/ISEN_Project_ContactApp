@@ -1,5 +1,8 @@
 package isen.quiz.model;
 
+import java.sql.*;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 public class Person {
 
@@ -37,6 +40,56 @@ public class Person {
         validateAndSetEmailAddress(emailAddress);
         this.birthDate = birthDate;
     }
+
+    /*public List<Person> getAllPersons() throws SQLException {
+        List<Person> listOfPersons = new ArrayList<>();
+
+//        String url = "jdbc:sqlite:sqlite.db";
+//        Connection connection = DriverManager.getConnection(url);
+//        Statement statement = connection.createStatement();
+//        String sqlQuery = "SELECT * FROM person";
+//        ResultSet result = statement.executeQuery(sqlQuery);
+//        return (List<Person>) result;
+
+        try (Connection connection = DataSourceFactory.getDataSource().getConnection()) {
+            try (Statement statement = connection.createStatement()) {
+                String sqlQuery = "SELECT * FROM person";
+                try (ResultSet results = statement.executeQuery(sqlQuery)) {
+                    while (results.next()) {
+                        // Create person object and add to listOfPersons array list
+                        Person person = new Person(
+                                results.getInt("idperson"),
+                                results.getString("firstname"),
+                                results.getString("lastname"),
+                                results.getString("nickname")
+                        );
+
+
+                        person.setPhoneNumber( results.getString("phone_number"));
+                        person.setEmailAddress(results.getString("email_address"));
+                        person.setAddress(results.getString("address"));
+
+
+                        // Check if the other fields are not null and set their values correspondingly
+                        if (results.getObject("address") != null)
+                            person.setAddress(results.getString("address"));
+                        if (results.getString("email_address") != null)
+                            person.setEmailAddress(results.getString("email_address"));
+                        if (results.getString("phone_number") != null)
+                            person.setPhoneNumber(results.getString("phone_number"));
+                        if (results.getDate("birth_date") != null)
+                            person.setDateOfBirth(results.getDate("birth_date").toLocalDate());
+                        listOfPersons.add(person);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            // Print stack trace to help us debug the issue.
+            e.printStackTrace();
+        }
+        return listOfPersons;
+
+    }*/
 
 
     //Getters and Setters
