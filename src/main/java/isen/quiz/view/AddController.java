@@ -14,19 +14,19 @@ public class AddController {
     @FXML
     private TextField idField;
     @FXML
-    private TextField lastNameField;
+    public TextField lastNameField;
     @FXML
-    private TextField firstNameField;
+    public TextField firstNameField;
     @FXML
-    private TextField nickNameField;
+    public TextField nickNameField;
     @FXML
-    private TextField phoneNumberField;
+    public TextField phoneNumberField;
     @FXML
-    private TextField addressField;
+    public TextField addressField;
     @FXML
-    private TextField emailAddressField;
+    public TextField emailAddressField;
     @FXML
-    private TextField birthDateField;
+    public TextField birthDateField;
 
     public void initialize() {}
     public void addPerson() {
