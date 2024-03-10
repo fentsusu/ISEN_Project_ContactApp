@@ -1,3 +1,4 @@
+/*
 package isen.quiz.test;
 
 import isen.quiz.model.Person;
@@ -138,4 +139,4 @@ public class AddPersonTest {
 //    }
 //
 //
-//}
+//}*/

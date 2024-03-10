@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="450.0" prefWidth="600.0" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.quiz.view.MainLayoutController">
+<BorderPane prefHeight="450.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.quiz.view.MainLayoutController">
 	<top>
 		<MenuBar BorderPane.alignment="CENTER">
 			<Menu mnemonicParsing="false" text="File">
@@ -11,9 +11,9 @@
 				<SeparatorMenuItem mnemonicParsing="false" />
 				<MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Close" />
 			</Menu>
-			<Menu mnemonicParsing="false" text="Administration">
+			<Menu mnemonicParsing="false" text="Menu">
+				<MenuItem mnemonicParsing="false" onAction="#gotoListPerson" text="Contact List" />
 				<MenuItem mnemonicParsing="false" onAction="#gotoAddPerson" text="Add person" />
-				<MenuItem mnemonicParsing="false" onAction="#gotoListPerson" text="List person" />
 				<MenuItem mnemonicParsing="false" onAction="#gotoUpdatePerson" text="Update person" />
 				<MenuItem mnemonicParsing="false" onAction="#gotoDeletePerson" text="Delete person" />
 			</Menu>

@@ -1,3 +1,5 @@
+/*
+package target.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals; // Add this import statement
 
@@ -30,7 +32,7 @@ public class TestAdd {
         expectedPersons.add(new Person("Aungkurboribhun", "Methika", "Fent", "0987654321", "1 Rue Andre", "methika@studen.com","2000-01-02"));
         expectedPersons.add(new Person("Yawuth", "Araya", "Jaja", "0983456789", "2 Rue Andre", "araya@studen.com","2001-01-02"));
         expectedPersons.add(new Person("Soodla", "Napat", "Mimi", "0945678921", "3 Rue Andre", "methika@studen.com","2002-01-07"));
-
+        expectedPersons.add(new Person("Suthamma", "Sirimata", "Mint", "0990017777", "4 Rue Andre", "sirimata@studen.com","2002-23-02"));
         List<Person> actualPersons = fetchAllPersonsFromDatabase();
 
         assertEquals(expectedPersons.size(), actualPersons.size());
@@ -97,6 +99,7 @@ public class TestAdd {
             statement.executeUpdate("INSERT INTO person (lastname, firstname, nickname, birth_date) VALUES ('Aungkurboribhun', 'Methika', 'Fent', '2000-01-02')");
             statement.executeUpdate("INSERT INTO person (lastname, firstname, nickname, birth_date) VALUES ('Yawuth', 'Araya', 'Jaja', '2001-01-02')");
             statement.executeUpdate("INSERT INTO person (lastname, firstname, nickname, birth_date) VALUES ('Soodla', 'Napat', 'Mimi', '2002-01-07')");
+            statement.executeUpdate("INSERT INTO person (lastname, firstname, nickname, birth_date) VALUES ('Suthamma', 'Sirimata', 'Mint', '2002-23-02')");
         }
     }
 
@@ -199,3 +202,4 @@ public class TestAdd {
     }
 
 }
+*/

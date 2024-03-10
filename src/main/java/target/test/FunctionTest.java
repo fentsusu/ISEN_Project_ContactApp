@@ -1,4 +1,4 @@
-package isen.quiz.test;
+package target.test;
 
 //import isen.quiz.model.Person;
 //import isen.quiz.service.DataSourceFactory;
@@ -98,7 +98,7 @@ import java.sql.Statement;
 public class FunctionTest {
 
     @BeforeAll
-    public void setUp() throws SQLException {
+    public static void setUp() throws SQLException {
         // Initialize the database and insert test data
         initializeDatabase();
     }
@@ -107,7 +107,7 @@ public class FunctionTest {
     public void runApplication() {
     }
 
-    public void initializeDatabase() throws SQLException {
+    public static void initializeDatabase() throws SQLException {
         String url = "jdbc:sqlite:sqlite.db";
         try (Connection connection = DriverManager.getConnection(url)) {
             Statement statement = connection.createStatement();
@@ -130,6 +130,7 @@ public class FunctionTest {
             statement.executeUpdate("INSERT INTO person VALUES (1, 'Aungkurboribhun','Methika','Fent','0990015588','1 rue','me@g.com','2000-01-02')");
             statement.executeUpdate("INSERT INTO person VALUES (2, 'Yawuth','Araya','Jaja','0990015555','2 rue','jj@g.com','2001-01-02')");
             statement.executeUpdate("INSERT INTO person VALUES (3, 'Soodla','Napat','Mimi','0990018888','3 rue','mm@g.com','2002-01-07')");
+            statement.executeUpdate("INSERT INTO person VALUES (4, 'Suthamma','Sirimata','Mint','0990017777','4 rue','m@g.com','2002-23-02')");
         }
     }
 }
