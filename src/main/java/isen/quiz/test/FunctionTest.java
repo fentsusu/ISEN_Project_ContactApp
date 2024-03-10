@@ -1,5 +1,5 @@
-//package isen.quiz.test;
-//
+package isen.quiz.test;
+
 //import isen.quiz.model.Person;
 //import isen.quiz.service.DataSourceFactory;
 //import isen.quiz.util.PersonDAO;
@@ -84,6 +84,51 @@
 //        statement.close();
 //        connection.close();
 //    }
-//
 //}
-//
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class FunctionTest {
+
+    @BeforeAll
+    public static void setUp() throws SQLException {
+        // Initialize the database and insert test data
+        initializeDatabase();
+    }
+
+    @Test
+    public void runApplication() {
+    }
+
+    private static void initializeDatabase() throws SQLException {
+        String url = "jdbc:sqlite:sqlite.db";
+        try (Connection connection = DriverManager.getConnection(url)) {
+            Statement statement = connection.createStatement();
+
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS person (\n" +
+                    "    idperson INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n" +
+                    "    lastname VARCHAR(45) NOT NULL,\n" +
+                    "    firstname VARCHAR(45) NOT NULL,\n" +
+                    "    nickname VARCHAR(45) NOT NULL,\n" +
+                    "    phone_number VARCHAR(15) NULL,\n" +
+                    "    address VARCHAR(200) NULL,\n" +
+                    "    email_address VARCHAR(150) NULL,\n" +
+                    "    birth_date VARCHAR(150) NULL);");
+
+            // Delete previously inserted data
+            statement.executeUpdate("DELETE FROM person");
+
+            // Insert test data
+            statement.executeUpdate("INSERT INTO person VALUES (1, 'Aungkurboribhun','Methika','Fent','0990015588','1 rue','me@g.com','2000-01-02')");
+            statement.executeUpdate("INSERT INTO person VALUES (2, 'Yawuth','Araya','Jaja','0990015555','2 rue','jj@g.com','2001-01-02')");
+            statement.executeUpdate("INSERT INTO person VALUES (3, 'Soodla','Napat','Mimi','0990018888','3 rue','mm@g.com','2002-01-07')");
+        }
+    }
+}
+

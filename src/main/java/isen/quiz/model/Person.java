@@ -109,6 +109,7 @@ public class Person {
         this.firstName = firstName;
     }
 
+    //Method for the Lastname must be non-empty and less than 50 characters
     private void validateAndSetLastName(String lastName) {
         if (lastName == null || lastName.isEmpty() || lastName.length() > 50) {
             throw new IllegalArgumentException("Last name must be non-empty and less than 50 characters.");
