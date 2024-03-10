@@ -29,9 +29,10 @@ public class testrun {
 
         stmt.executeUpdate("DELETE FROM person");
         //insert data
-        stmt.executeUpdate("Insert into person values (1,'Aungkurboribhun','Methika','Fent','0999999999','2 Rue D','fent1@g.com','20/10/2001')");
-        stmt.executeUpdate("INSERT INTO person VALUES (2, 'Yawuth','Araya','Jaja','0990015555','4 rue','jj@g.com','02/01/2001')");
-        stmt.executeUpdate("INSERT INTO person VALUES (3, 'A','Alice','Alice','0990018888','5 rue','aa@g.com','07/01/2002')");
+        stmt.executeUpdate("Insert into person values (1,'Aungkurboribhun','Methika','Fent','0999999999','1 Rue D','fent1@g.com','20/10/2001')");
+        stmt.executeUpdate("INSERT INTO person VALUES (2, 'Yawuth','Araya','Jaja','0990015555','2 rue','jj@g.com','02/01/2001')");
+        stmt.executeUpdate("INSERT INTO person VALUES (3, 'Soodla','Napat','Mimi','0990018888','3 rue','mm@g.com','07/01/2002')");
+        stmt.executeUpdate("INSERT INTO person VALUES (4, 'Suthamma','Sirimata','Mint','0990017777','4 rue','m@g.com','23/02/2002')");
 
         String select = "Select * from person";
         ResultSet rs = stmt.executeQuery(select);
