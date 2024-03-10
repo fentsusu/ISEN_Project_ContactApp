@@ -1,5 +1,7 @@
 package isen.quiz;
 
+import org.junit.jupiter.api.Test;
+
 import java.sql.*;
 
 public class testrun {
@@ -32,4 +34,5 @@ public class testrun {
             System.out.println(rs.getString("firstname"));
         }
     }
+
 }

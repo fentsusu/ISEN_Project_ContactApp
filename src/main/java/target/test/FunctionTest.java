@@ -98,7 +98,7 @@ import java.sql.Statement;
 public class FunctionTest {
 
     @BeforeAll
-    public static void setUp() throws SQLException {
+    public void setUp() throws SQLException {
         // Initialize the database and insert test data
         initializeDatabase();
     }
